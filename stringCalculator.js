@@ -7,8 +7,20 @@ class StringCalculator {
 
         let delimiter = /,|\n/; // Default delimiters: comma or newline
 
+        if (numbers.startsWith('//')) {
+            const parts = numbers.split('\n');
+            delimiter = new RegExp(parts[0].substring(2)); // Extract custom delimiter
+            numbers = parts[1];
+          }
+
         // Split string using the delimiter and remove empty entries
         const numArray = numbers.split(delimiter).filter(num => num.trim() !== "");
+
+        const negatives = numArray.filter(n => n < 0);
+
+    if (negatives.length > 0) {
+      throw new Error(`Negatives not allowed: ${negatives.join(', ')}`);
+    }
 
         // Convert to numbers
         const numValues = numArray.map(num => {

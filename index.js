@@ -10,7 +10,9 @@ const testCases = [
   '1,2',     // should return 3
   '1,2,3,4', // should return 10
   '1\n2,3',  // should return 6
-  
+  '//;\n1;2', // should return 3
+  '1,-2,3',    // should throw error: "Negatives not allowed: -2"
+  '1,-2,-3,4'  // should throw error: "Negatives not allowed: -2, -3"
 ];
 
 // Function to escape newlines for proper display

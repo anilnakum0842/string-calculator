@@ -29,5 +29,17 @@ describe('StringCalculator', () => {
   it('should handle newlines as delimiters', () => {
     expect(calculator.add('1\n2,3')).to.equal(6);
   });
+
+  it('should support custom delimiters', () => {
+    expect(calculator.add('//;\n1;2')).to.equal(3);
+  });
+
+  it('should throw an exception for negative numbers', () => {
+    expect(() => calculator.add('1,-2,3')).to.throw('Negatives not allowed: -2');
+  });
+  
+  it('should throw an exception listing all negative numbers', () => {
+    expect(() => calculator.add('1,-2,-3,4')).to.throw('Negatives not allowed: -2, -3');
+  });
   
 });
