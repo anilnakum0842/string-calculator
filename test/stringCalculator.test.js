@@ -41,5 +41,17 @@ describe('StringCalculator', () => {
   it('should throw an exception listing all negative numbers', () => {
     expect(() => calculator.add('1,-2,-3,4')).to.throw('Negatives not allowed: -2, -3');
   });
+
+  it('should ignore numbers larger than 1000', () => {
+    expect(calculator.add('2,1001')).to.equal(2);
+  });
+
+  it('should support delimiters of any length', () => {
+    expect(calculator.add('//[***]\n1***2***3')).to.equal(6);
+  });
+
+  it('should support multiple delimiters', () => {
+    expect(calculator.add('//[*][%]\n1*2%3')).to.equal(6);
+  });
   
 });

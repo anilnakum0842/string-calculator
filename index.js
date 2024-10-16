@@ -12,7 +12,10 @@ const testCases = [
   '1\n2,3',  // should return 6
   '//;\n1;2', // should return 3
   '1,-2,3',    // should throw error: "Negatives not allowed: -2"
-  '1,-2,-3,4'  // should throw error: "Negatives not allowed: -2, -3"
+  '1,-2,-3,4',  // should throw error: "Negatives not allowed: -2, -3"
+  '2,1001',  // should return 2 (ignores numbers > 1000)
+  '//[***]\n1***2***3', // should return 6
+  '//[*][%]\n1*2%3' // should return 6
 ];
 
 // Function to escape newlines for proper display
